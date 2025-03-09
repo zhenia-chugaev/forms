@@ -2,8 +2,13 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "A library for creating HTML forms",
-  "main": "index.js",
+  "files": [
+    "dist/",
+    "package.json"
+  ],
+  "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
