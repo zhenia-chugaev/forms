@@ -1,3 +1,3 @@
-import sum from './src/sum'
+import Tag from './src/Tag'
 
-console.log(sum(2, 2));
+export default Tag;
