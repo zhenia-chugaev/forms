@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "A library for creating HTML forms",
   "files": [
-    "dist/",
-    "package.json"
+    "dist/"
   ],
   "main": "dist/index.js",
   "scripts": {

@@ -1,5 +1,5 @@
+import { Dictionary } from '@/types';
 import Attributes from './Attributes';
-import { Dictionary } from '../types';
 
 const singleTagNames = [
   'area',

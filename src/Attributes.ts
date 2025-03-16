@@ -1,4 +1,4 @@
-import { Dictionary } from '../types';
+import { Dictionary } from '@/types';
 
 class Attributes {
   constructor(private attributes: Dictionary) {}
