@@ -1,3 +1,1 @@
-export interface Dictionary {
-  [key: string]: string | number | boolean;
-}
+export type Dictionary = Record<string, string | number | boolean>

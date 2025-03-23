@@ -13,6 +13,7 @@
     }
   },
   "exclude": [
-    "eslint.config.ts"
+    "dist/",
+    "*.config.*"
   ]
 }
