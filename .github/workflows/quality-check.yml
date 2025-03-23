@@ -1,0 +1,17 @@
+name: quality-check
+on: push
+jobs:
+  run-check:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: prepare
+        run: make install
+      - name: check
+        run: |
+          make check &&
+          make lint
