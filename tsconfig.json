@@ -9,16 +9,9 @@
     "strict": true,
     "skipLibCheck": true,
     "paths": {
-      "@/types": [
-        "./types"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "@/types": ["./types"],
+      "@/*": ["./src/*"]
     }
   },
-  "exclude": [
-    "dist/",
-    "*.config.*"
-  ]
+  "exclude": ["dist/", "*.config.*"]
 }

@@ -15,7 +15,7 @@ const singleTagNames = [
   'param',
   'source',
   'track',
-  'wbr'
+  'wbr',
 ];
 
 class Tag {
@@ -26,7 +26,7 @@ class Tag {
   constructor(
     name: string,
     attributes: Dictionary = {},
-    children: Tag[] | string = '',
+    children: Tag[] | string = ''
   ) {
     this.name = name;
     this.attributes = new Attributes(attributes);
