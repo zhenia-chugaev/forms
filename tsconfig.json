@@ -11,5 +11,8 @@
       "@/types": ["./types"],
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": [
+    "eslint.config.ts"
+  ]
 }
