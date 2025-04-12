@@ -17,3 +17,18 @@ jobs:
           make check &&
           make lint &&
           make test
+  upload-report:
+    needs: run-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: prepare
+        run: make install
+      - name: generate
+        run: make coverage
+      - name: report
+        uses: qltysh/qlty-action/coverage@main
+        with:
+          coverage-token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+          files: coverage/lcov.info

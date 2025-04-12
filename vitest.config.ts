@@ -6,6 +6,7 @@ const config = defineConfig({
     globals: true,
     coverage: {
       include: ['src/**'],
+      reporter: ['text', 'lcov'],
     },
   },
   resolve: {
