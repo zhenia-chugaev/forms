@@ -5,7 +5,9 @@ class Attributes {
 
   public toString(): string {
     const result = Object.entries(this.attributes)
-      .map(([key, value]) => ` ${key}="${value.toString()}"`)
+      .map(([key, value]) =>
+        value === true ? ` ${key}` : ` ${key}="${value.toString()}"`
+      )
       .join('');
     return result;
   }
