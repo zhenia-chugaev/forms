@@ -20,6 +20,12 @@ export default tseslint.config([
       },
     },
   },
+  {
+    files: ['__tests__/**/*.{ts,mts,cts,js,mjs,cjs}'],
+    languageOptions: {
+      globals: globals.vitest,
+    },
+  },
   pluginJs.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   tseslint.configs.strictTypeChecked,
