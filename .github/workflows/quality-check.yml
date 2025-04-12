@@ -15,4 +15,5 @@ jobs:
       - name: check
         run: |
           make check &&
-          make lint
+          make lint &&
+          make test
