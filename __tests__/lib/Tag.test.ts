@@ -1,4 +1,4 @@
-import Tag from '@/Tag';
+import Tag from '@/lib/Tag';
 
 test('single tags', () => {
   const BrTag = new Tag('br');
