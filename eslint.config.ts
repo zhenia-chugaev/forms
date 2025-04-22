@@ -5,7 +5,7 @@ import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default tseslint.config([
-  globalIgnores(['dist/']),
+  globalIgnores(['dist/', 'coverage/']),
   {
     files: ['**/*.{ts,mts,cts,js,mjs,cjs}'],
   },
