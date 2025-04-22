@@ -1,3 +1,3 @@
-import Tag from './src/lib/Tag';
+import FormGenerator from './src/FormGenerator';
 
-export default Tag;
+export default FormGenerator;
