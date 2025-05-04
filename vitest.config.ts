@@ -12,6 +12,7 @@ const config = defineConfig({
   resolve: {
     alias: {
       '@/types': path.join(__dirname, './types/'),
+      '@/utils': path.join(__dirname, './utils/'),
       '@/': path.join(__dirname, './src/'),
     },
   },
