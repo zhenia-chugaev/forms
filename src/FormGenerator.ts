@@ -1,18 +1,18 @@
-import { Dictionary } from '@/types';
+import { FormTemplate, FormAttributes } from '@/types';
 import Tag from './lib/Tag';
 
 class FormGenerator {
   private builder = {};
 
   public static formFor(
-    template: Record<string, string>,
-    attributes: Dictionary,
-    builderFunction: (builder: object) => void
+    template: FormTemplate,
+    attributes: FormAttributes,
+    buildFormFields: (builder: object) => void
   ): string {
+    const { url = '#', method = 'post', ...restAttributes } = attributes;
     const { builder } = new FormGenerator();
-    builderFunction(builder);
-    const { url = '#', method = 'post' } = attributes;
-    const formTag = new Tag('form', { action: url, method });
+    buildFormFields(builder);
+    const formTag = new Tag('form', { action: url, method, ...restAttributes });
     const formHtml = formTag.toString();
     return formHtml;
   }
