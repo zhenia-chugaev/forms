@@ -2,6 +2,10 @@ export type Dictionary = Record<string, string | number | boolean>;
 
 export type FormTemplate = Record<string, string | number>;
 
+export type FormFieldAttributes = Dictionary & {
+  as?: 'input' | 'textarea';
+};
+
 type EncriptionTypes =
   | 'application/x-www-form-urlencoded'
   | 'multipart/form-data'

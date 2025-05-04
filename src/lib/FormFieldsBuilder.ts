@@ -1,5 +1,30 @@
-import { Dictionary, FormTemplate } from '@/types';
+import { FormTemplate, FormFieldAttributes, Dictionary } from '@/types';
 import Tag from './Tag';
+
+const getInputTag = (name: string, value: string, attributes: Dictionary): Tag =>
+  new Tag('input', {
+    name,
+    type: 'text',
+    value,
+    ...attributes,
+  });
+
+const getTextareaTag = (name: string, value: string, attributes: Dictionary): Tag =>
+  new Tag(
+    'textarea',
+    {
+      cols: 20,
+      rows: 40,
+      name,
+      ...attributes,
+    },
+    value
+  );
+
+const tags = {
+  input: getInputTag,
+  textarea: getTextareaTag,
+};
 
 class FormFieldsBuilder<T extends FormTemplate> {
   private state: Tag[] = [];
@@ -15,17 +40,17 @@ class FormFieldsBuilder<T extends FormTemplate> {
     return state;
   }
 
-  public input(name: keyof T & string, attributes: Dictionary = {}): void {
+  public input(name: keyof T & string, attributes: FormFieldAttributes = {}): void {
     if (!Object.keys(this.template).includes(name)) {
       throw new Error("Field 'age' does not exist in the template.");
     }
-    const inputTag = new Tag('input', {
-      name,
-      type: 'text',
-      value: this.template[name],
-      ...attributes,
-    });
-    this.state = [...this.state, inputTag];
+    const {
+      as = 'input',
+      value = this.template[name],
+      ...restAttributes
+    }: FormFieldAttributes = attributes;
+    const tag = tags[as](name, value.toString(), restAttributes);
+    this.state = [...this.state, tag];
   }
 }
 
