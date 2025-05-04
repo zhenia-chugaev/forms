@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-
 import { readFixture, formatHtml } from '@/utils';
 import FormGenerator from '@/FormGenerator';
 
@@ -39,6 +36,7 @@ test('accessing non-existent template property', () => {
   const getForm = () =>
     FormGenerator.formFor(template, {}, (f) => {
       f.input('name');
+      // @ts-expect-error: check accessing non-existent template property
       f.input('age');
     });
   expect(() => getForm()).toThrow("Field 'age' does not exist in the template");
