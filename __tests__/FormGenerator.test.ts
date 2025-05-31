@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { readFixture, formatHtml } from '@/utils';
 import FormGenerator from '@/FormGenerator';
 
@@ -6,6 +9,7 @@ test('form generation', async () => {
   const form = FormGenerator.formFor(template, { method: 'post' }, (f) => {
     f.input('name');
     f.input('job', { as: 'textarea' });
+    f.submit();
   });
   const html = await readFixture('form1.html');
   expect(form).toBe(formatHtml(html));
@@ -26,6 +30,7 @@ test('overriding default attribute values', async () => {
   const form = FormGenerator.formFor(template, { url: '#' }, (f) => {
     f.input('name', { type: 'hidden' });
     f.input('job', { as: 'textarea', rows: 50, cols: 50, minlength: 5 });
+    f.submit('Send');
   });
   const html = await readFixture('form3.html');
   expect(form).toBe(formatHtml(html));
