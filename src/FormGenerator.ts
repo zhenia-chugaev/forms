@@ -1,4 +1,5 @@
-import { FormTemplate, FormAttributes } from '@/types';
+import { FormTemplate, FormAttributes, FormGeneratorConfig } from '@/types';
+import getFormatter from './formatters';
 import Tag from './lib/Tag';
 import FormFieldsBuilder from './lib/FormFieldsBuilder';
 
@@ -9,11 +10,11 @@ class FormGenerator<T extends FormTemplate> {
     this.builder = new FormFieldsBuilder(template);
   }
 
-  public static formFor<T extends FormTemplate>(
+  private static getFormTag<T extends FormTemplate>(
     template: T,
     attributes: FormAttributes,
     buildFormFields: (builder: FormFieldsBuilder<T>) => void
-  ): string {
+  ): Tag {
     const { url = '#', method = 'post', ...restAttributes } = attributes;
     const { builder } = new FormGenerator(template);
     buildFormFields(builder);
@@ -22,7 +23,19 @@ class FormGenerator<T extends FormTemplate> {
       { action: url, method, ...restAttributes },
       builder.getState()
     );
-    const formHtml = formTag.toString();
+    return formTag;
+  }
+
+  public static formFor<T extends FormTemplate>(
+    template: T,
+    attributes: FormAttributes,
+    buildFormFields: (builder: FormFieldsBuilder<T>) => void,
+    config: FormGeneratorConfig = {}
+  ): string {
+    const { format = 'html' } = config;
+    const formatter = getFormatter(format);
+    const formTag = FormGenerator.getFormTag(template, attributes, buildFormFields);
+    const formHtml = formatter.format(formTag);
     return formHtml;
   }
 }

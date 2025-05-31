@@ -1,5 +1,6 @@
 import { Dictionary } from '@/types';
-import Attributes from './Attributes';
+
+type TagChildren = Tag | Tag[] | string;
 
 const singleTagNames = [
   'area',
@@ -19,39 +20,33 @@ const singleTagNames = [
 ];
 
 class Tag {
-  private name: string;
-  private attributes: Attributes;
-  private children: Tag | Tag[] | string;
-
   constructor(
-    name: string,
-    attributes: Dictionary = {},
-    children: Tag | Tag[] | string = ''
-  ) {
-    this.name = name;
-    this.attributes = new Attributes(attributes);
-    this.children = children;
+    private name: string,
+    private attributes: Dictionary = {},
+    private children: TagChildren = ''
+  ) {}
+
+  public getName(): string {
+    const { name } = this;
+    return name;
   }
 
-  private isSingle(): boolean {
+  public getAttributes(): Dictionary {
+    const { attributes } = this;
+    return attributes;
+  }
+
+  public getChildren(): TagChildren {
+    const { children } = this;
+    return children;
+  }
+
+  public isSingle(): boolean {
     const result = singleTagNames.includes(this.name);
     return result;
-  }
-
-  private getChildrenAsString(): string {
-    const result = Array.isArray(this.children)
-      ? this.children.map((child) => child.toString()).join('')
-      : this.children;
-    return result.toString();
-  }
-
-  public toString(): string {
-    if (this.isSingle()) {
-      return `<${this.name}${this.attributes.toString()}>`;
-    }
-    const children = this.getChildrenAsString();
-    return `<${this.name}${this.attributes.toString()}>${children}</${this.name}>`;
   }
 }
 
 export default Tag;
+
+export type { TagChildren };

@@ -29,3 +29,9 @@ type PostFormAttributes = FormSubmissionAttributes & {
 };
 
 export type FormAttributes = GetFormAttributes | PostFormAttributes;
+
+export type Formats = 'html';
+
+export interface FormGeneratorConfig {
+  format?: Formats;
+}

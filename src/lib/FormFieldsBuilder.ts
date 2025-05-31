@@ -33,13 +33,10 @@ const tags = {
 };
 
 class FormFieldsBuilder<T extends FormTemplate> {
-  private state: Tag[] = [];
-  private template: T;
-
-  constructor(template: T, initialState: Tag[] = []) {
-    this.state = initialState;
-    this.template = template;
-  }
+  constructor(
+    private template: T,
+    private state: Tag[] = []
+  ) {}
 
   public getState() {
     const state = [...this.state];
