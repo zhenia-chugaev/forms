@@ -1,5 +1,9 @@
 import { FormTemplate, FormFieldAttributes, Dictionary } from '@/types';
+import { capitalize } from '@/utils';
 import Tag from './Tag';
+
+const getLabelTag = (id: string, value: string, attributes: Dictionary = {}): Tag =>
+  new Tag('label', { for: id, ...attributes }, value);
 
 const getInputTag = (name: string, value: string, attributes: Dictionary): Tag =>
   new Tag('input', {
@@ -49,8 +53,12 @@ class FormFieldsBuilder<T extends FormTemplate> {
       value = this.template[name],
       ...restAttributes
     }: FormFieldAttributes = attributes;
-    const tag = tags[as](name, value.toString(), restAttributes);
-    this.state = [...this.state, tag];
+    const textField = tags[as](name, value.toString(), {
+      id: name,
+      ...restAttributes,
+    });
+    const labelTag = getLabelTag(name, capitalize(name));
+    this.state = [...this.state, labelTag, textField];
   }
 }
 
