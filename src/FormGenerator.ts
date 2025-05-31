@@ -1,7 +1,6 @@
 import { FormTemplate, FormAttributes, FormGeneratorConfig } from '@/types';
 import getFormatter from './formatters';
-import Tag from './lib/Tag';
-import FormFieldsBuilder from './lib/FormFieldsBuilder';
+import { Tag, FormFieldsBuilder } from './lib';
 
 class FormGenerator<T extends FormTemplate> {
   private builder: FormFieldsBuilder<T>;

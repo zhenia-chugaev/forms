@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 
 import { Formats } from '@/types';
-import Tag from '@/lib/Tag';
+import { Tag } from '@/lib';
 import HtmlFormatter from './HtmlFormatter';
 
 interface Formatter {
