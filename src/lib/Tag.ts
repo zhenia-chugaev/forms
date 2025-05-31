@@ -21,12 +21,12 @@ const singleTagNames = [
 class Tag {
   private name: string;
   private attributes: Attributes;
-  private children: Tag[] | string;
+  private children: Tag | Tag[] | string;
 
   constructor(
     name: string,
     attributes: Dictionary = {},
-    children: Tag[] | string = ''
+    children: Tag | Tag[] | string = ''
   ) {
     this.name = name;
     this.attributes = new Attributes(attributes);
@@ -42,7 +42,7 @@ class Tag {
     const result = Array.isArray(this.children)
       ? this.children.map((child) => child.toString()).join('')
       : this.children;
-    return result;
+    return result.toString();
   }
 
   public toString(): string {
