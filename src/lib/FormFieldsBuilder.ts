@@ -66,6 +66,14 @@ class FormFieldsBuilder<T extends FormTemplate> {
     });
     this.state = [...this.state, labelTag, textField];
   }
+
+  public submit(value = 'Save'): void {
+    const inputTag = new Tag('input', {
+      type: 'submit',
+      value,
+    });
+    this.state = [...this.state, inputTag];
+  }
 }
 
 export default FormFieldsBuilder;
