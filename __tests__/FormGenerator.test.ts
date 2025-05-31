@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-
 import { readFixture, formatHtml } from '@/utils';
 import FormGenerator from '@/FormGenerator';
 
