@@ -9,6 +9,24 @@
 
 Form Generator is a library that allows to create html forms in website templates.
 
+## Installation & Usage
+
+Clone the repo.
+Run commands:
+
+```shell
+$ cd <package folder>
+$ make install
+$ npm link # this creates a global reference to the package on your computer.
+```
+
+To use it as your project dependency:
+
+```shell
+$ cd <your project folder>
+$ npm link @hexlet/code
+```
+
 ## Example
 
 ```javascript
