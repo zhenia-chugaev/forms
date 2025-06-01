@@ -9,7 +9,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsup",
-    "check": "prettier --check .",
+    "check": "prettier --check . && tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
