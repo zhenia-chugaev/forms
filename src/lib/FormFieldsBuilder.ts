@@ -45,7 +45,7 @@ class FormFieldsBuilder<T extends FormTemplate> {
 
   public input(name: keyof T & string, attributes: FormFieldAttributes = {}): void {
     if (!Object.keys(this.template).includes(name)) {
-      throw new Error("Field 'age' does not exist in the template.");
+      throw new Error(`Field "${name}" does not exist in the template.`);
     }
     const {
       as = 'input',

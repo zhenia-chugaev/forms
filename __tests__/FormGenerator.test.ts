@@ -41,7 +41,7 @@ test('accessing non-existent template property', () => {
       // @ts-expect-error: check accessing non-existent template property
       f.input('age');
     });
-  expect(() => getForm()).toThrow("Field 'age' does not exist in the template");
+  expect(() => getForm()).toThrow('Field "age" does not exist in the template');
 });
 
 test('empty form generation', () => {
